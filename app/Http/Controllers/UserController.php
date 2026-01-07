@@ -28,4 +28,9 @@ class UserController extends Controller
             'email' => 'Invalid credentials.',
         ]);
     }
+
+    public function viewRegister() 
+    {
+        return view('register');
+    }
 }
