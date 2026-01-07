@@ -57,3 +57,124 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+# KnowledgeQuest
+
+**KnowledgeQuest** is an interactive, gamified quiz and learning platform built with **Laravel**. It allows users to take quizzes across multiple topics, track their progress, earn points and badges, and compete on leaderboards. This project demonstrates full-stack development skills, including database design, authentication, backend logic, and interactive frontend features.
+
+---
+
+## 🔹 Features
+
+- **User Authentication**
+  - Register, login, and logout
+  - Role-based access: User & Admin
+
+- **Quizzes**
+  - Multiple categories and difficulty levels
+  - Timed quizzes for challenge mode
+  - Add, edit, and delete quizzes (Admin)
+
+- **Gamification**
+  - Points awarded for correct answers
+  - Badges for milestones
+  - Leaderboards for top performers
+
+- **Analytics & Progress Tracking**
+  - Track scores and progress per category
+  - View past quiz attempts
+
+- **Interactive UI**
+  - Responsive design with **Tailwind CSS**
+  - Clean and intuitive dashboard
+  - Optional: animated progress bars and leaderboard updates
+
+---
+
+## 🔹 Technologies Used
+
+- **Backend:** Laravel 12.43.1 (PHP 8.5)
+- **Frontend:** Blade Templates, Tailwind CSS
+- **Database:** MySQL / MariaDB
+- **Authentication:** Laravel Breeze / Jetstream
+- **Extras:** Charts & progress bars (Chart.js / ApexCharts)
+
+---
+
+## 🔹 Database Structure (Simplified)
+
+- **users**: stores user info (name, email, password)
+- **quizzes**: stores quiz titles, category, difficulty
+- **questions**: stores question text, options, correct answer
+- **attempts**: stores user attempts and scores
+- **leaderboards**: stores top performers
+
+---
+
+## 🔹 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/abfasb/KnowledgeQuest.git
+cd KnowledgeQuest
+Install dependencies:
+
+```
+
+2. Install dependencies:
+
+```bash
+composer install
+npm install
+npm run dev
+```
+3. Set up environment:
+
+Create Database:
+
+```bash
+CREATE DATABASE knowledgequest
+
+```
+
+Copy .env.example to .env:
+
+```bash
+cp .env.example .env
+
+```
+Update your database credentials in .env:
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=knowledgequest
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+
+4. Generate app key:
+
+```bash
+
+php artisan key:generate
+```
+
+5. Run migrations:
+
+```bash
+
+php artisan migrate
+```
+
+6. Serve the application:
+
+```bash
+
+php artisan serve
+```
