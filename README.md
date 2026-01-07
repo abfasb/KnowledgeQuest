@@ -60,6 +60,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 
+
+
+
+
 # KnowledgeQuest
 
 **KnowledgeQuest** is an interactive, gamified quiz and learning platform built with **Laravel**. It allows users to take quizzes across multiple topics, track their progress, earn points and badges, and compete on leaderboards. This project demonstrates full-stack development skills, including database design, authentication, backend logic, and interactive frontend features.
