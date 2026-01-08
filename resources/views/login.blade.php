@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>KnowledgeQuest - Interactive Learning Platform</title>
+    <title>KnowledgeQuest - Login</title>
     <style>
         * {
             font-family: 'Poppins', sans-serif;
@@ -16,23 +16,14 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .card-hover {
-            transition: all 0.3s ease;
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .progress-bar {
-            transition: width 1s ease-in-out;
-        }
-        
-        .tab-active {
-            background-color: white;
-            color: #764ba2;
-            font-weight: 600;
+        .card-shadow {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
         
         .floating {
@@ -45,782 +36,308 @@
             100% { transform: translateY(0px); }
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header/Navigation -->
-    <nav class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-brain text-2xl"></i>
-                    <h1 class="text-2xl font-bold">KnowledgeQuest</h1>
+<body class="gradient-bg min-h-screen flex flex-col items-center justify-center p-4">
+    <!-- Main Container -->
+    <div class="container max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <a href="#" class="inline-flex items-center space-x-3 mb-4">
+                <div class="h-14 w-14 rounded-full bg-white flex items-center justify-center">
+                    <i class="fas fa-brain text-3xl gradient-text"></i>
                 </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="hover:text-yellow-300 transition duration-300">Dashboard</a>
-                    <a href="#" class="hover:text-yellow-300 transition duration-300">Quizzes</a>
-                    <a href="#" class="hover:text-yellow-300 transition duration-300">Leaderboard</a>
-                    <a href="#" class="hover:text-yellow-300 transition duration-300">Progress</a>
-                    <a href="#" class="hover:text-yellow-300 transition duration-300">Badges</a>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <i class="fas fa-bell text-xl cursor-pointer"></i>
-                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                <h1 class="text-4xl font-bold text-white">KnowledgeQuest</h1>
+            </a>
+            <p class="text-white text-lg opacity-90 max-w-2xl mx-auto">
+                Welcome back! Sign in to continue your learning journey, track your progress, and unlock new achievements.
+            </p>
+        </header>
+
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+            <!-- Login Form Card -->
+            <div class="bg-white rounded-2xl card-shadow overflow-hidden w-full max-w-md">
+                <div class="p-8">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Sign In to Your Account</h2>
+                        <p class="text-gray-600">Enter your credentials to access your dashboard</p>
                     </div>
-                    <div class="hidden md:flex items-center space-x-2 bg-white bg-opacity-20 px-4 py-2 rounded-full">
-                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="User" class="h-8 w-8 rounded-full">
-                        <span>John Doe</span>
-                        <i class="fas fa-chevron-down"></i>
+                    
+                    <form id="loginForm" class="space-y-6">
+                        <!-- Email Field -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-envelope mr-2 text-purple-600"></i>Email Address
+                            </label>
+                            <div class="relative">
+                                <input type="email" id="email" name="email" 
+                                       class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:outline-none input-focus transition duration-300"
+                                       placeholder="you@example.com" required>
+                                <div class="absolute left-4 top-3.5 text-gray-400">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Password Field -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label for="password" class="block text-sm font-medium text-gray-700">
+                                    <i class="fas fa-lock mr-2 text-purple-600"></i>Password
+                                </label>
+                                <a href="#" class="text-sm text-purple-600 hover:text-purple-800 font-medium">
+                                    Forgot password?
+                                </a>
+                            </div>
+                            <div class="relative">
+                                <input type="password" id="password" name="password" 
+                                       class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:outline-none input-focus transition duration-300"
+                                       placeholder="Enter your password" required>
+                                <div class="absolute left-4 top-3.5 text-gray-400">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <button type="button" id="togglePassword" class="absolute right-4 top-3.5 text-gray-400 hover:text-gray-600">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Remember Me -->
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember" name="remember" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+                            <label for="remember" class="ml-2 block text-sm text-gray-700">
+                                Remember me for 30 days
+                            </label>
+                        </div>
+                        
+                        <!-- Login Button -->
+                        <button type="submit" 
+                                class="w-full gradient-bg text-white py-3.5 rounded-xl font-semibold text-lg hover:opacity-90 transition duration-300 transform hover:-translate-y-0.5">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                        </button>
+                        
+                        <!-- Divider -->
+                        <div class="relative flex items-center justify-center my-6">
+                            <div class="flex-grow border-t border-gray-300"></div>
+                            <span class="mx-4 text-gray-500 text-sm">Or continue with</span>
+                            <div class="flex-grow border-t border-gray-300"></div>
+                        </div>
+                        
+                        <!-- Social Login Buttons -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <button type="button" 
+                                    class="flex items-center justify-center py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition duration-300">
+                                <i class="fab fa-google text-red-500 mr-2"></i>
+                                <span>Google</span>
+                            </button>
+                            <button type="button" 
+                                    class="flex items-center justify-center py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition duration-300">
+                                <i class="fab fa-github text-gray-800 mr-2"></i>
+                                <span>GitHub</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Switch to Register -->
+                    <div class="mt-8 text-center">
+                        <p class="text-gray-600">
+                            Don't have an account? 
+                            <a href="register.html" class="text-purple-600 font-semibold hover:text-purple-800 ml-1">
+                                Create one now
+                            </a>
+                        </p>
+                    </div>
+                    
+                    <!-- Role Selection -->
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <p class="text-center text-gray-600 mb-4">Sign in as:</p>
+                        <div class="flex space-x-4">
+                            <button id="studentLogin" 
+                                    class="flex-1 py-3 bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl text-blue-700 font-medium hover:from-blue-100 hover:to-blue-200 transition duration-300">
+                                <i class="fas fa-user-graduate mr-2"></i>Student
+                            </button>
+                            <button id="adminLogin" 
+                                    class="flex-1 py-3 bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-200 rounded-xl text-purple-700 font-medium hover:from-purple-100 hover:to-purple-200 transition duration-300">
+                                <i class="fas fa-user-shield mr-2"></i>Admin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Features/Info -->
+            <div class="w-full max-w-md">
+                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 text-white">
+                    <h3 class="text-2xl font-bold mb-6">Why Join KnowledgeQuest?</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-trophy text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Gamified Learning</h4>
+                                <p class="opacity-90">Earn points, badges, and climb leaderboards as you learn.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0 floating">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Track Your Progress</h4>
+                                <p class="opacity-90">Monitor your improvement with detailed analytics and reports.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-brain text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Wide Range of Topics</h4>
+                                <p class="opacity-90">From science to history, test your knowledge across multiple domains.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Compete with Friends</h4>
+                                <p class="opacity-90">Challenge your friends and see who comes out on top.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="mt-10 grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-white bg-opacity-10 rounded-xl">
+                            <div class="text-2xl font-bold">10K+</div>
+                            <div class="text-sm opacity-90">Active Learners</div>
+                        </div>
+                        <div class="text-center p-4 bg-white bg-opacity-10 rounded-xl">
+                            <div class="text-2xl font-bold">500+</div>
+                            <div class="text-sm opacity-90">Quizzes Available</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
-    
-    <!-- Main Container -->
-    <div class="container mx-auto px-4 py-8">
-        <!-- Role Selection (Tabs) -->
-        <div class="max-w-4xl mx-auto mb-12">
-            <div class="flex flex-col md:flex-row justify-center items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to KnowledgeQuest</h2>
-                <div class="bg-gradient-to-r from-purple-100 to-blue-100 px-6 py-2 rounded-full">
-                    <span class="font-medium text-purple-800">Interactive Learning Platform</span>
+        
+        <!-- Demo Credentials -->
+        <div class="mt-12 max-w-2xl mx-auto bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-white">
+            <h4 class="font-bold text-lg mb-4 text-center"><i class="fas fa-info-circle mr-2"></i>Demo Credentials</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-white bg-opacity-15 rounded-lg">
+                    <h5 class="font-semibold mb-2 flex items-center">
+                        <i class="fas fa-user-graduate mr-2"></i>Student Account
+                    </h5>
+                    <p class="text-sm opacity-90 mb-1">Email: <code class="bg-white bg-opacity-20 px-2 py-1 rounded">student@knowledgequest.com</code></p>
+                    <p class="text-sm opacity-90">Password: <code class="bg-white bg-opacity-20 px-2 py-1 rounded">password123</code></p>
                 </div>
-            </div>
-            
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div class="flex border-b">
-                    <button id="studentTab" class="tab-button flex-1 py-4 text-center text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 transition duration-300 tab-active">
-                        <i class="fas fa-user-graduate mr-2"></i>Student Portal
-                    </button>
-                    <button id="adminTab" class="tab-button flex-1 py-4 text-center text-lg font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 transition duration-300">
-                        <i class="fas fa-user-shield mr-2"></i>Admin Portal
-                    </button>
-                </div>
-                
-                <!-- Student Dashboard -->
-                <div id="studentDashboard" class="p-6 md:p-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                        <!-- User Profile Card -->
-                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-100 card-hover">
-                            <div class="flex items-center mb-4">
-                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=667eea&color=fff" alt="User" class="h-16 w-16 rounded-full mr-4">
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">John Doe</h3>
-                                    <p class="text-gray-600">Knowledge Seeker</p>
-                                    <div class="flex items-center mt-1">
-                                        <i class="fas fa-star text-yellow-500 mr-1"></i>
-                                        <span class="font-medium">Level 12</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex justify-between mb-2">
-                                <span class="text-gray-600">Points:</span>
-                                <span class="font-bold text-purple-700">1,850</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span class="text-gray-600">Rank:</span>
-                                <span class="font-bold text-purple-700">#8</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Stats Card -->
-                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Your Stats</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">Quizzes Completed</span>
-                                        <span class="font-medium">24</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-500 h-2 rounded-full" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">Correct Answers</span>
-                                        <span class="font-medium">78%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 78%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">Learning Streak</span>
-                                        <span class="font-medium">14 days</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-purple-500 h-2 rounded-full" style="width: 70%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Badges Card -->
-                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover">
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Badges</h3>
-                            <div class="flex flex-wrap gap-3">
-                                <div class="flex flex-col items-center">
-                                    <div class="h-12 w-12 rounded-full bg-yellow-100 flex items-center justify-center mb-1">
-                                        <i class="fas fa-rocket text-yellow-600"></i>
-                                    </div>
-                                    <span class="text-xs text-center">Quick Starter</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-1">
-                                        <i class="fas fa-brain text-blue-600"></i>
-                                    </div>
-                                    <span class="text-xs text-center">Mastermind</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
-                                        <i class="fas fa-fire text-green-600"></i>
-                                    </div>
-                                    <span class="text-xs text-center">Hot Streak</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-1">
-                                        <i class="fas fa-trophy text-purple-600"></i>
-                                    </div>
-                                    <span class="text-xs text-center">Champion</span>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-1">
-                                        <i class="fas fa-bolt text-red-600"></i>
-                                    </div>
-                                    <span class="text-xs text-center">Speedster</span>
-                                </div>
-                            </div>
-                            <button class="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 rounded-lg transition duration-300">
-                                View All Badges
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Available Quizzes Section -->
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Available Quizzes</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                        <!-- Quiz Card 1 -->
-                        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm card-hover">
-                            <div class="p-5">
-                                <div class="flex justify-between items-start mb-3">
-                                    <div>
-                                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Science</span>
-                                        <span class="inline-block ml-2 px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Easy</span>
-                                    </div>
-                                    <div class="text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                        <span class="text-sm ml-1">4.8</span>
-                                    </div>
-                                </div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-2">Biology Basics</h4>
-                                <p class="text-gray-600 mb-4">Test your knowledge of fundamental biology concepts and living organisms.</p>
-                                <div class="flex justify-between text-sm text-gray-500 mb-4">
-                                    <div class="flex items-center">
-                                        <i class="far fa-clock mr-1"></i>
-                                        <span>15 min</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="far fa-question-circle mr-1"></i>
-                                        <span>10 questions</span>
-                                    </div>
-                                </div>
-                                <button class="w-full gradient-bg text-white py-3 rounded-lg font-medium hover:opacity-90 transition duration-300 pulse">
-                                    Start Quiz
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Quiz Card 2 -->
-                        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm card-hover">
-                            <div class="p-5">
-                                <div class="flex justify-between items-start mb-3">
-                                    <div>
-                                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">History</span>
-                                        <span class="inline-block ml-2 px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">Medium</span>
-                                    </div>
-                                    <div class="text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                        <span class="text-sm ml-1">4.5</span>
-                                    </div>
-                                </div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-2">World History</h4>
-                                <p class="text-gray-600 mb-4">Explore historical events from ancient civilizations to modern times.</p>
-                                <div class="flex justify-between text-sm text-gray-500 mb-4">
-                                    <div class="flex items-center">
-                                        <i class="far fa-clock mr-1"></i>
-                                        <span>25 min</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="far fa-question-circle mr-1"></i>
-                                        <span>15 questions</span>
-                                    </div>
-                                </div>
-                                <button class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-medium hover:opacity-90 transition duration-300">
-                                    Start Quiz
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Quiz Card 3 -->
-                        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm card-hover">
-                            <div class="p-5">
-                                <div class="flex justify-between items-start mb-3">
-                                    <div>
-                                        <span class="inline-block px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Mathematics</span>
-                                        <span class="inline-block ml-2 px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Hard</span>
-                                    </div>
-                                    <div class="text-yellow-500">
-                                        <i class="fas fa-star"></i>
-                                        <span class="text-sm ml-1">4.9</span>
-                                    </div>
-                                </div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-2">Advanced Calculus</h4>
-                                <p class="text-gray-600 mb-4">Challenge yourself with complex calculus problems and theorems.</p>
-                                <div class="flex justify-between text-sm text-gray-500 mb-4">
-                                    <div class="flex items-center">
-                                        <i class="far fa-clock mr-1"></i>
-                                        <span>40 min</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="far fa-question-circle mr-1"></i>
-                                        <span>20 questions</span>
-                                    </div>
-                                </div>
-                                <button class="w-full bg-gradient-to-r from-red-500 to-orange-600 text-white py-3 rounded-lg font-medium hover:opacity-90 transition duration-300">
-                                    Start Quiz
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Leaderboard Preview -->
-                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-2xl font-bold text-gray-800">Top Performers</h3>
-                            <a href="#" class="text-purple-600 hover:text-purple-800 font-medium">View Full Leaderboard <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="border-b">
-                                        <th class="text-left py-3 text-gray-700">Rank</th>
-                                        <th class="text-left py-3 text-gray-700">Player</th>
-                                        <th class="text-left py-3 text-gray-700">Points</th>
-                                        <th class="text-left py-3 text-gray-700">Quizzes</th>
-                                        <th class="text-left py-3 text-gray-700">Accuracy</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <div class="h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
-                                                    <span class="font-bold text-yellow-800">1</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=667eea&color=fff" alt="User" class="h-10 w-10 rounded-full mr-3">
-                                                <span class="font-medium">Alex Johnson</span>
-                                            </div>
-                                        </td>
-                                        <td class="py-4 font-bold text-gray-800">2,450</td>
-                                        <td class="py-4">32</td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">94%</span>
-                                                <div class="w-20 bg-gray-200 rounded-full h-2">
-                                                    <div class="bg-green-500 h-2 rounded-full" style="width: 94%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <div class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center mr-3">
-                                                    <span class="font-bold text-gray-800">2</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <img src="https://ui-avatars.com/api/?name=Maria+Garcia&background=764ba2&color=fff" alt="User" class="h-10 w-10 rounded-full mr-3">
-                                                <span class="font-medium">Maria Garcia</span>
-                                            </div>
-                                        </td>
-                                        <td class="py-4 font-bold text-gray-800">2,310</td>
-                                        <td class="py-4">28</td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">91%</span>
-                                                <div class="w-20 bg-gray-200 rounded-full h-2">
-                                                    <div class="bg-green-500 h-2 rounded-full" style="width: 91%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <div class="h-8 w-8 rounded-full bg-orange-100 flex items-center justify-center mr-3">
-                                                    <span class="font-bold text-orange-800">3</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <img src="https://ui-avatars.com/api/?name=David+Smith&background=f6ad55&color=fff" alt="User" class="h-10 w-10 rounded-full mr-3">
-                                                <span class="font-medium">David Smith</span>
-                                            </div>
-                                        </td>
-                                        <td class="py-4 font-bold text-gray-800">2,150</td>
-                                        <td class="py-4">30</td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">89%</span>
-                                                <div class="w-20 bg-gray-200 rounded-full h-2">
-                                                    <div class="bg-green-500 h-2 rounded-full" style="width: 89%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50">
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
-                                                    <span class="font-bold text-blue-800">8</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <img src="https://ui-avatars.com/api/?name=John+Doe&background=4299e1&color=fff" alt="User" class="h-10 w-10 rounded-full mr-3">
-                                                <span class="font-medium">John Doe</span>
-                                                <span class="ml-2 text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full">You</span>
-                                            </div>
-                                        </td>
-                                        <td class="py-4 font-bold text-gray-800">1,850</td>
-                                        <td class="py-4">24</td>
-                                        <td class="py-4">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">78%</span>
-                                                <div class="w-20 bg-gray-200 rounded-full h-2">
-                                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 78%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Admin Dashboard -->
-                <div id="adminDashboard" class="p-6 md:p-8 hidden">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-                        <!-- Admin Profile Card -->
-                        <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl border border-purple-100 card-hover">
-                            <div class="flex items-center mb-6">
-                                <div class="h-16 w-16 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center text-white text-2xl mr-4">
-                                    <i class="fas fa-user-shield"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-gray-800">Admin User</h3>
-                                    <p class="text-gray-600">Platform Administrator</p>
-                                    <div class="flex items-center mt-1">
-                                        <i class="fas fa-crown text-yellow-500 mr-1"></i>
-                                        <span class="font-medium">Full Access</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Total Quizzes:</span>
-                                    <span class="font-bold text-purple-700">48</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Total Questions:</span>
-                                    <span class="font-bold text-purple-700">520</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Active Users:</span>
-                                    <span class="font-bold text-purple-700">1,248</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Quick Actions -->
-                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover">
-                            <h3 class="text-xl font-bold text-gray-800 mb-6">Quick Actions</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <button class="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-lg flex flex-col items-center justify-center hover:opacity-90 transition duration-300">
-                                    <i class="fas fa-plus-circle text-2xl mb-2"></i>
-                                    <span class="text-sm font-medium">Add Quiz</span>
-                                </button>
-                                <button class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white p-4 rounded-lg flex flex-col items-center justify-center hover:opacity-90 transition duration-300">
-                                    <i class="fas fa-question-circle text-2xl mb-2"></i>
-                                    <span class="text-sm font-medium">Add Questions</span>
-                                </button>
-                                <button class="bg-gradient-to-r from-purple-500 to-pink-600 text-white p-4 rounded-lg flex flex-col items-center justify-center hover:opacity-90 transition duration-300">
-                                    <i class="fas fa-users text-2xl mb-2"></i>
-                                    <span class="text-sm font-medium">Manage Users</span>
-                                </button>
-                                <button class="bg-gradient-to-r from-orange-500 to-red-600 text-white p-4 rounded-lg flex flex-col items-center justify-center hover:opacity-90 transition duration-300">
-                                    <i class="fas fa-chart-bar text-2xl mb-2"></i>
-                                    <span class="text-sm font-medium">View Reports</span>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- System Status -->
-                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover">
-                            <h3 class="text-xl font-bold text-gray-800 mb-6">System Status</h3>
-                            <div class="space-y-5">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">Server Load</span>
-                                        <span class="font-medium">42%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-500 h-2 rounded-full" style="width: 42%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">Database</span>
-                                        <span class="font-medium">68%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 68%"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-gray-700">Active Sessions</span>
-                                        <span class="font-medium">247</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 65%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 p-3 bg-green-50 text-green-800 rounded-lg text-sm">
-                                <i class="fas fa-check-circle mr-2"></i> All systems operational
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Quiz Management Section -->
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Quiz Management</h3>
-                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mb-10">
-                        <div class="px-6 py-4 border-b flex justify-between items-center">
-                            <h4 class="text-lg font-bold text-gray-800">All Quizzes</h4>
-                            <button class="gradient-bg text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition duration-300">
-                                <i class="fas fa-plus mr-2"></i> Create New Quiz
-                            </button>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="bg-gray-50">
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">ID</th>
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">Quiz Title</th>
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">Category</th>
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">Difficulty</th>
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">Questions</th>
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">Status</th>
-                                        <th class="text-left py-4 px-6 text-gray-700 font-medium">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4 px-6">#001</td>
-                                        <td class="py-4 px-6 font-medium">Biology Basics</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">Science</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Easy</span>
-                                        </td>
-                                        <td class="py-4 px-6">10</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Active</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <div class="flex space-x-2">
-                                                <button class="text-blue-600 hover:text-blue-800">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="text-green-600 hover:text-green-800">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4 px-6">#002</td>
-                                        <td class="py-4 px-6 font-medium">World History</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-medium rounded-full">History</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">Medium</span>
-                                        </td>
-                                        <td class="py-4 px-6">15</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Active</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <div class="flex space-x-2">
-                                                <button class="text-blue-600 hover:text-blue-800">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="text-green-600 hover:text-green-800">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4 px-6">#003</td>
-                                        <td class="py-4 px-6 font-medium">Advanced Calculus</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Mathematics</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-red-100 text-red-800 text-xs font-medium rounded-full">Hard</span>
-                                        </td>
-                                        <td class="py-4 px-6">20</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Active</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <div class="flex space-x-2">
-                                                <button class="text-blue-600 hover:text-blue-800">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="text-green-600 hover:text-green-800">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b hover:bg-gray-50">
-                                        <td class="py-4 px-6">#004</td>
-                                        <td class="py-4 px-6 font-medium">Literature Classics</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full">Literature</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">Medium</span>
-                                        </td>
-                                        <td class="py-4 px-6">12</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-gray-100 text-gray-800 text-xs font-medium rounded-full">Draft</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <div class="flex space-x-2">
-                                                <button class="text-blue-600 hover:text-blue-800">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="text-green-600 hover:text-green-800">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="hover:bg-gray-50">
-                                        <td class="py-4 px-6">#005</td>
-                                        <td class="py-4 px-6 font-medium">Computer Science 101</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-teal-100 text-teal-800 text-xs font-medium rounded-full">Technology</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Easy</span>
-                                        </td>
-                                        <td class="py-4 px-6">8</td>
-                                        <td class="py-4 px-6">
-                                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs font-medium rounded-full">Active</span>
-                                        </td>
-                                        <td class="py-4 px-6">
-                                            <div class="flex space-x-2">
-                                                <button class="text-blue-600 hover:text-blue-800">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="text-green-600 hover:text-green-800">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="text-red-600 hover:text-red-800">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <!-- Create New Quiz Form -->
-                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Create New Quiz</h3>
-                        <form>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Quiz Title</label>
-                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter quiz title">
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Category</label>
-                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
-                                        <option value="">Select Category</option>
-                                        <option value="science">Science</option>
-                                        <option value="history">History</option>
-                                        <option value="mathematics">Mathematics</option>
-                                        <option value="literature">Literature</option>
-                                        <option value="technology">Technology</option>
-                                        <option value="arts">Arts</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Difficulty Level</label>
-                                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
-                                        <option value="">Select Difficulty</option>
-                                        <option value="easy">Easy</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="hard">Hard</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Time Limit (minutes)</label>
-                                    <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter time limit" min="1">
-                                </div>
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 mb-2">Description</label>
-                                <textarea rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Enter quiz description"></textarea>
-                            </div>
-                            <div class="flex justify-end space-x-4">
-                                <button type="button" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300">
-                                    Cancel
-                                </button>
-                                <button type="submit" class="gradient-bg text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition duration-300">
-                                    <i class="fas fa-save mr-2"></i> Save Quiz
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="p-4 bg-white bg-opacity-15 rounded-lg">
+                    <h5 class="font-semibold mb-2 flex items-center">
+                        <i class="fas fa-user-shield mr-2"></i>Admin Account
+                    </h5>
+                    <p class="text-sm opacity-90 mb-1">Email: <code class="bg-white bg-opacity-20 px-2 py-1 rounded">admin@knowledgequest.com</code></p>
+                    <p class="text-sm opacity-90">Password: <code class="bg-white bg-opacity-20 px-2 py-1 rounded">admin123</code></p>
                 </div>
             </div>
         </div>
     </div>
     
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 mt-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-brain text-2xl text-purple-400"></i>
-                        <h2 class="text-2xl font-bold">KnowledgeQuest</h2>
-                    </div>
-                    <p class="text-gray-400">Interactive, gamified learning platform</p>
-                </div>
-                
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-facebook text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <i class="fab fa-github text-xl"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2023 KnowledgeQuest. All rights reserved. | Built with Laravel & Tailwind CSS</p>
-            </div>
+    <footer class="mt-12 text-center text-white opacity-80 pb-8">
+        <p class="mb-4">&copy; 2023 KnowledgeQuest. All rights reserved.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="hover:opacity-100 opacity-80 transition duration-300">Privacy Policy</a>
+            <a href="#" class="hover:opacity-100 opacity-80 transition duration-300">Terms of Service</a>
+            <a href="#" class="hover:opacity-100 opacity-80 transition duration-300">Contact Us</a>
         </div>
     </footer>
     
-    <!-- JavaScript for Tab Switching -->
+    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const studentTab = document.getElementById('studentTab');
-            const adminTab = document.getElementById('adminTab');
-            const studentDashboard = document.getElementById('studentDashboard');
-            const adminDashboard = document.getElementById('adminDashboard');
+            // Toggle password visibility
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
             
-            // Switch to Student Dashboard
-            studentTab.addEventListener('click', function() {
-                studentTab.classList.add('tab-active');
-                adminTab.classList.remove('tab-active');
-                studentDashboard.classList.remove('hidden');
-                adminDashboard.classList.add('hidden');
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="far fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
             });
             
-            // Switch to Admin Dashboard
-            adminTab.addEventListener('click', function() {
-                adminTab.classList.add('tab-active');
-                studentTab.classList.remove('tab-active');
-                adminDashboard.classList.remove('hidden');
-                studentDashboard.classList.add('hidden');
-            });
-            
-            // Add some interactive elements
-            const quizCards = document.querySelectorAll('.card-hover');
-            quizCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
+            // Pre-fill demo credentials when role buttons are clicked
+            document.getElementById('studentLogin').addEventListener('click', function() {
+                document.getElementById('email').value = 'student@knowledgequest.com';
+                document.getElementById('password').value = 'password123';
+                document.getElementById('remember').checked = true;
                 
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
+                // Visual feedback
+                this.classList.add('from-blue-200', 'to-blue-300');
+                document.getElementById('adminLogin').classList.remove('from-purple-200', 'to-purple-300');
             });
             
-            setTimeout(() => {
-                const progressBars = document.querySelectorAll('.progress-bar');
-                progressBars.forEach(bar => {
-                    bar.style.width = bar.getAttribute('data-width') || '0%';
-                });
-            }, 300);
+            document.getElementById('adminLogin').addEventListener('click', function() {
+                document.getElementById('email').value = 'admin@knowledgequest.com';
+                document.getElementById('password').value = 'admin123';
+                document.getElementById('remember').checked = true;
+                
+                // Visual feedback
+                this.classList.add('from-purple-200', 'to-purple-300');
+                document.getElementById('studentLogin').classList.remove('from-blue-200', 'to-blue-300');
+            });
+            
+            // Form submission
+            document.getElementById('loginForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const remember = document.getElementById('remember').checked;
+                
+                // Simple validation
+                if (!email || !password) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Check if it's admin or student credentials
+                    if (email === 'admin@knowledgequest.com' && password === 'admin123') {
+                        alert('Login successful! Redirecting to Admin Dashboard...');
+                        window.location.href = 'admin-dashboard.html';
+                    } else if (email === 'student@knowledgequest.com' && password === 'password123') {
+                        alert('Login successful! Redirecting to Student Dashboard...');
+                        window.location.href = 'student-dashboard.html';
+                    } else {
+                        alert('Invalid credentials. Try student@knowledgequest.com / password123 or admin@knowledgequest.com / admin123');
+                    }
+                    
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+            
+            const floatingIcons = document.querySelectorAll('.floating');
+            floatingIcons.forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.5}s`;
+            });
         });
     </script>
 </body>
