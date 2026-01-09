@@ -152,7 +152,6 @@
                 </div>
             </header>
 
-            <!-- Mobile Sidebar (Hidden by default) -->
             <div id="mobileSidebar" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 hidden md:hidden">
                 <div class="w-64 bg-gradient-to-b from-blue-900 to-blue-800 text-white h-full animate__animated animate__slideInLeft">
                     <div class="p-4 flex justify-between items-center border-b border-blue-700">
@@ -181,9 +180,7 @@
                 </div>
             </div>
 
-            <!-- Main Content -->
             <main class="flex-1 p-6 overflow-y-auto">
-                <!-- Welcome Section -->
                 <div class="mb-8">
                     <h1 class="text-3xl font-bold text-gray-800">Welcome back, <span class="text-blue-600">{{ auth()->user()->first_name }}</span>! 👋</h1>
                     <p class="text-gray-600 mt-2">Ready to test your knowledge and earn some badges today?</p>
