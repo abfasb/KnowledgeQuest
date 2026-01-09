@@ -20,6 +20,6 @@ class DashboardController extends Controller
             abort(403);
         }
 
-        return view('student.dashboard');
+        return view('admin.dashboard');
     }
 }

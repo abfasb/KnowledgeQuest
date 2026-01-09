@@ -29,11 +29,11 @@ class UserController extends Controller
             $user = Auth::user();
 
             if ($user->user_type === 'admin') {
-                return redirect('/admin-home')->with('success', 'Welcome Admin!');
+                return redirect('/admin')->with('success', 'Welcome Admin!');
             }
 
             if ($user->user_type === 'student') {
-                return redirect('/student-home')->with('success', 'Welcome Student!');
+                return redirect('/student')->with('success', 'Welcome Student!');
             }
 
             return redirect('/home');
