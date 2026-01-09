@@ -66,16 +66,16 @@
                         <p class="text-gray-600">Enter your credentials to access your dashboard</p>
                     </div>
                     
-                    <form id="loginForm" class="space-y-6">
-                        <!-- Email Field -->
+                    <form id="loginForm" class="space-y-6" method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="email" class="b lock text-sm font-medium text-gray-700 mb-2">
                                 <i class="fas fa-envelope mr-2 text-purple-600"></i>Email Address
                             </label>
                             <div class="relative">
                                 <input type="email" id="email" name="email" 
                                        class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:outline-none input-focus transition duration-300"
-                                       placeholder="you@example.com" required>
+                                       placeholder="Enter your email" required>
                                 <div class="absolute left-4 top-3.5 text-gray-400">
                                     <i class="far fa-envelope"></i>
                                 </div>
@@ -168,66 +168,7 @@
                 </div>
             </div>
             
-            <!-- Right Side - Features/Info -->
-            <div class="w-full max-w-md">
-                <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 text-white">
-                    <h3 class="text-2xl font-bold mb-6">Why Join KnowledgeQuest?</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-trophy text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Gamified Learning</h4>
-                                <p class="opacity-90">Earn points, badges, and climb leaderboards as you learn.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0 floating">
-                                <i class="fas fa-chart-line text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Track Your Progress</h4>
-                                <p class="opacity-90">Monitor your improvement with detailed analytics and reports.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-brain text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Wide Range of Topics</h4>
-                                <p class="opacity-90">From science to history, test your knowledge across multiple domains.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-1">Compete with Friends</h4>
-                                <p class="opacity-90">Challenge your friends and see who comes out on top.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Stats -->
-                    <div class="mt-10 grid grid-cols-2 gap-4">
-                        <div class="text-center p-4 bg-white bg-opacity-10 rounded-xl">
-                            <div class="text-2xl font-bold">10K+</div>
-                            <div class="text-sm opacity-90">Active Learners</div>
-                        </div>
-                        <div class="text-center p-4 bg-white bg-opacity-10 rounded-xl">
-                            <div class="text-2xl font-bold">500+</div>
-                            <div class="text-sm opacity-90">Quizzes Available</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
         
         <!-- Demo Credentials -->
@@ -274,66 +215,7 @@
                 passwordInput.setAttribute('type', type);
                 this.innerHTML = type === 'password' ? '<i class="far fa-eye"></i>' : '<i class="far fa-eye-slash"></i>';
             });
-            
-            // Pre-fill demo credentials when role buttons are clicked
-            document.getElementById('studentLogin').addEventListener('click', function() {
-                document.getElementById('email').value = 'student@knowledgequest.com';
-                document.getElementById('password').value = 'password123';
-                document.getElementById('remember').checked = true;
-                
-                // Visual feedback
-                this.classList.add('from-blue-200', 'to-blue-300');
-                document.getElementById('adminLogin').classList.remove('from-purple-200', 'to-purple-300');
-            });
-            
-            document.getElementById('adminLogin').addEventListener('click', function() {
-                document.getElementById('email').value = 'admin@knowledgequest.com';
-                document.getElementById('password').value = 'admin123';
-                document.getElementById('remember').checked = true;
-                
-                // Visual feedback
-                this.classList.add('from-purple-200', 'to-purple-300');
-                document.getElementById('studentLogin').classList.remove('from-blue-200', 'to-blue-300');
-            });
-            
-            // Form submission
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                const remember = document.getElementById('remember').checked;
-                
-                // Simple validation
-                if (!email || !password) {
-                    alert('Please fill in all fields');
-                    return;
-                }
-                
-                // Show loading state
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
-                submitBtn.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    // Check if it's admin or student credentials
-                    if (email === 'admin@knowledgequest.com' && password === 'admin123') {
-                        alert('Login successful! Redirecting to Admin Dashboard...');
-                        window.location.href = 'admin-dashboard.html';
-                    } else if (email === 'student@knowledgequest.com' && password === 'password123') {
-                        alert('Login successful! Redirecting to Student Dashboard...');
-                        window.location.href = 'student-dashboard.html';
-                    } else {
-                        alert('Invalid credentials. Try student@knowledgequest.com / password123 or admin@knowledgequest.com / admin123');
-                    }
-                    
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            });
-            
+
             const floatingIcons = document.querySelectorAll('.floating');
             floatingIcons.forEach((icon, index) => {
                 icon.style.animationDelay = `${index * 0.5}s`;

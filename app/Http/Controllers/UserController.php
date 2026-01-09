@@ -15,7 +15,8 @@ class UserController extends Controller
         return view('login');
     }
 
-      public function login(Request $request)
+     
+    public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -25,12 +26,22 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            $user = Auth::user();
+
+            if ($user->user_type === 'admin') {
+                return redirect('/admin-home')->with('success', 'Welcome Admin!');
+            }
+
+            if ($user->user_type === 'student') {
+                return redirect('/student-home')->with('success', 'Welcome Student!');
+            }
+
+            return redirect('/home');
         }
 
         return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
+            'email' => 'Invalid email or password.',
+        ])->onlyInput('email');
     }
 
     public function viewRegister() 
