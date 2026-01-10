@@ -186,9 +186,7 @@
                     <p class="text-gray-600 mt-2">Ready to test your knowledge and earn some badges today?</p>
                 </div>
 
-                <!-- Stats Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <!-- Total Points -->
                     <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
                         <div class="flex justify-between items-start">
                             <div>

@@ -23,7 +23,6 @@
                 <p class="text-gray-400 text-sm mt-1">Administration Portal</p>
             </div>
 
-            <!-- User Profile Card -->
             <div class="p-6 border-b border-gray-700">
                 <div class="flex items-center">
                     <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center text-xl font-bold">
@@ -235,14 +234,13 @@
                                 <div class="border-t my-2"></div>
                                 <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"><i class="fas fa-user mr-3"></i>View as Student</a>
                                 <div class="border-t my-2"></div>
-                                <a href="#" class="block px-4 py-2 text-red-600 hover:bg-red-50 rounded"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
+                                <a href="{{ route('logout') }}" class="block px-4 py-2 text-red-600 hover:bg-red-50 rounded"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <!-- Mobile Sidebar (Hidden by default) -->
             <div id="mobileSidebar" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 hidden md:hidden">
                 <div class="w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white h-full animate__animated animate__slideInLeft">
                     <div class="p-4 flex justify-between items-center border-b border-gray-700">
