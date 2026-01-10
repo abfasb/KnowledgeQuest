@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\QuizController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,3 +22,6 @@ Route::get('/student', [DashboardController::class, 'student'])->name('student.d
 Route::get('/admin', [DashboardController::class, 'admin'])->name('admin.dashboard');
 
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+ 
+Route::get('/quiz-data', [QuizController::class, 'quizzes']);
+Route::get('/categories', [QuizController::class, 'categories']);
