@@ -75,7 +75,7 @@
                             <div class="relative">
                                 <input type="email" id="email" name="email" 
                                        class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-xl focus:outline-none input-focus transition duration-300"
-                                       placeholder="Enter your email" required>
+                                       placeholder="Enter your email    " required>
                                 <div class="absolute left-4 top-3.5 text-gray-400">
                                     <i class="far fa-envelope"></i>
                                 </div>

@@ -53,16 +53,14 @@
                 <p class="text-blue-300 text-sm mt-1">Student Learning Portal</p>
             </div>
 
-            <!-- User Profile Card -->
             <div class="p-6 border-b border-blue-700">
                 <div class="flex items-center">
                     <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-xl font-bold">
-                        JS
+                        {{ strtoupper(substr(auth()->user()->first_name ?? '', 0, 1)) }}{{ strtoupper(substr(auth()->user()->last_name ?? '', 0, 1)) }}
                     </div>
                     <div class="ml-4">
-                        <h3 class="font-semibold">John Smith</h3>
+                        <h3 class="font-semibold">{{ auth()->user()->first_name}} {{ auth()->user()->last_name}}</h3>
                         <p class="text-sm text-blue-300">Student</p>
-                        <p class="text-xs text-blue-400 mt-1">Level 15 • 1,850 Points</p>
                     </div>
                 </div>
             </div>
@@ -158,7 +156,7 @@
                     <div class="relative">
                         <button id="userDropdownBtn" class="flex items-center space-x-2 focus:outline-none">
                             <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-                                J
+                                 {{ strtoupper(substr(auth()->user()->first_name ?? '', 0, 1)) }}
                             </div>
                             <i class="fas fa-chevron-down text-gray-600 hidden md:block"></i>
                         </button>
@@ -166,8 +164,8 @@
                         <!-- Dropdown Menu -->
                         <div id="userDropdown" class="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-200 hidden z-10">
                             <div class="p-4 border-b">
-                                <p class="font-semibold text-gray-800">John Smith</p>
-                                <p class="text-sm text-gray-500">john@example.com</p>
+                                <p class="font-semibold text-gray-800">{{ auth()->user()->first_name}} {{ auth()->user()->last_name}}</p>
+                                <p class="text-sm text-gray-500">{{ auth()->user()->email}}</p>
                                 <div class="flex items-center mt-2">
                                     <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded">Student</span>
                                     <span class="ml-2 text-xs text-gray-500">Level 15</span>
@@ -215,11 +213,11 @@
                     <div class="p-4">
                         <div class="flex items-center mb-6">
                             <div class="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                                JS
+                                 {{ strtoupper(substr(auth()->user()->first_name ?? '', 0, 1)) }}{{ strtoupper(substr(auth()->user()->last_name ?? '', 0, 1)) }}
                             </div>
                             <div class="ml-3">
-                                <h3 class="font-semibold">John Smith</h3>
-                                <p class="text-sm text-blue-300">john@example.com</p>
+                                <h3 class="font-semibold">{{ auth()->user()->first_name}} {{ auth()->user()->last_name}}</h3>
+                                <p class="text-sm text-blue-300">{{ auth()->user()->email }}</p>
                             </div>
                         </div>
                         <nav>
@@ -240,7 +238,7 @@
                 <div id="dashboard" class="content-section">
                     <!-- Welcome Section -->
                     <div class="mb-8">
-                        <h1 class="text-3xl font-bold text-gray-800">Welcome back, <span class="text-blue-600">John</span>! 👋</h1>
+                        <h1 class="text-3xl font-bold text-gray-800">Welcome back, <span class="text-blue-600">{{ auth()->user()->first_name}}</span>! 👋</h1>
                         <p class="text-gray-600 mt-2">Ready to test your knowledge and earn some badges today?</p>
                         <div class="flex flex-wrap items-center mt-4 gap-3">
                             <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium flex items-center">
@@ -1044,7 +1042,6 @@
                 quizContainer.innerHTML += questionHTML;
             });
 
-            // Add submit button if there are questions
             if (window.quizData.length > 0) {
                 quizContainer.innerHTML += `
                     <div class="mt-8 flex justify-center">
