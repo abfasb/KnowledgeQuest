@@ -109,6 +109,7 @@
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+        
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -292,7 +293,7 @@
                     </div>
 
                     <!-- User Dropdown -->
-                    <div class="relative">
+                    <div class="relative" style="z-index: 10000;">
                         <button id="userDropdownBtn" class="flex items-center space-x-3 focus:outline-none group">
                             <div class="relative">
                                 <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 transition-transform">
