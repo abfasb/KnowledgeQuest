@@ -25,3 +25,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
  
 Route::get('/quiz-data', [QuizController::class, 'quizzes']);
 Route::get('/categories', [QuizController::class, 'categories']);
+Route::post('/quiz/submit', [QuizController::class, 'submitQuiz'])->name('quiz.submit');
+Route::get('/quiz/history', [QuizController::class, 'getHistory'])->name('quiz.history');
+Route::get('/dashboard/stats', [QuizController::class, 'getDashboardStats'])->name('dashboard.stats');
+Route::get('/category/stats', [QuizController::class, 'getCategoryStats'])->name('category.stats');

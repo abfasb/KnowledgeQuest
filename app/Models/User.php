@@ -27,6 +27,16 @@ class User extends Authenticatable
     'status',
 ];
 
+public function quizHistories()
+{
+    return $this->hasMany(QuizHistory::class);
+}
+
+public function stats()
+{
+    return $this->hasOne(UserStat::class);
+}
+
     /**
      * The attributes that should be hidden for serialization.
      *
