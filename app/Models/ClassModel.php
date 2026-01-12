@@ -26,35 +26,48 @@ class ClassModel extends Model
 
     public function students(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'class_user')
-                    ->withPivot('status', 'joined_at')
-                    ->withTimestamps();
+        return $this->belongsToMany(
+            User::class,    
+            'class_users', 
+            'class_id',    
+            'user_id'     
+        )->withPivot('status', 'joined_at')
+         ->withTimestamps();
     }
 
     public function activeStudents(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'class_user')
-                    ->wherePivot('status', 'active')
-                    ->withPivot('joined_at')
-                    ->withTimestamps();
-    }
-
-    public function quizzes(): HasMany
-    {
-        return $this->hasMany(Quiz::class);
-    }
-
-    public function publishedQuizzes(): HasMany
-    {
-        return $this->hasMany(Quiz::class)->where('is_published', true);
+        return $this->belongsToMany(
+            User::class,
+            'class_users',
+            'class_id',
+            'user_id'
+        )->wherePivot('status', 'active')
+         ->withPivot('joined_at')
+         ->withTimestamps();
     }
 
     public function pendingStudents(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'class_user')
-                    ->wherePivot('status', 'pending')
-                    ->withPivot('joined_at')
-                    ->withTimestamps();
+        return $this->belongsToMany(
+            User::class,
+            'class_users',
+            'class_id',
+            'user_id'
+        )->wherePivot('status', 'pending')
+         ->withPivot('joined_at')
+         ->withTimestamps();
+    }
+
+    public function quizzes(): HasMany
+    {
+        return $this->hasMany(Quiz::class, 'class_id'); 
+    }
+
+    public function publishedQuizzes(): HasMany
+    {
+        return $this->hasMany(Quiz::class, 'class_id')
+                    ->where('is_published', true);
     }
 
     public function generateClassCode(): string
