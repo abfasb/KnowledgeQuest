@@ -314,8 +314,6 @@
                                 <p class="font-bold text-white text-lg">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</p>
                                 <p class="text-white/90 text-sm">{{ auth()->user()->email }}</p>
                                 <div class="flex items-center mt-3">
-                                    <span class="px-3 py-1 bg-white/20 text-white text-xs font-medium rounded-full">Platinum Member</span>
-                                    <span class="ml-2 text-xs text-white/80">Level 15</span>
                                 </div>
                             </div>
                             <div class="p-2">
@@ -767,27 +765,10 @@
                             </div>
                         </div>
 
-                        <!-- Stats Row -->
-                        <div class="grid grid-cols-3 gap-4 mb-6">
-                            <div class="bg-white rounded-xl p-4 text-center border border-gray-100">
-                                <div class="text-2xl font-bold text-green-600" id="correctCountDisplay">0</div>
-                                <div class="text-sm text-gray-600 mt-1">Correct</div>
-                            </div>
-                            <div class="bg-white rounded-xl p-4 text-center border border-gray-100">
-                                <div class="text-2xl font-bold text-red-600" id="incorrectCountDisplay">0</div>
-                                <div class="text-sm text-gray-600 mt-1">Incorrect</div>
-                            </div>
-                            <div class="bg-white rounded-xl p-4 text-center border border-gray-100">
-                                <div class="text-2xl font-bold text-blue-600" id="timeDisplay">00:00</div>
-                                <div class="text-sm text-gray-600 mt-1">Time</div>
-                            </div>
-                        </div>
 
-                        <!-- Question Navigation -->
                         <div id="questionNav" class="flex flex-wrap gap-2 mb-4"></div>
                     </div>
 
-                    <!-- Quiz Container -->
                     <div id="quiz" class="space-y-6 mb-8"></div>
 
                     <!-- Quiz Results -->
@@ -1746,8 +1727,7 @@
                 window.elapsedTime = Math.floor((Date.now() - window.quizStartTime) / 1000);
                 const minutes = Math.floor(window.elapsedTime / 60);
                 const seconds = window.elapsedTime % 60;
-                document.getElementById('timeDisplay').textContent = 
-                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+               
             }
         }
 
@@ -1843,7 +1823,7 @@
                                 <span class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium ${window.userAnswers[index] ? 'bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 border border-green-200' : 'bg-gradient-to-r from-yellow-100 to-orange-100 text-yellow-800 border border-yellow-200'}">
                                     ${window.userAnswers[index] ? 
                                         '<i class="fas fa-check-circle mr-2"></i> Answered' : 
-                                        '<i class="fas fa-clock mr-2"></i> Pending'}
+                                        '<i class="fas fa-clock mr-2"></i> Answer it Correctly'}
                                 </span>
                             </div>
                         </div>
@@ -1965,9 +1945,6 @@
             }).length;
             
             const incorrectCount = answered - correctCount;
-            
-            document.getElementById('correctCountDisplay').textContent = correctCount;
-            document.getElementById('incorrectCountDisplay').textContent = incorrectCount;
             
             setupQuestionNavigation();
         }
