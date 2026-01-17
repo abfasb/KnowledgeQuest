@@ -60,7 +60,6 @@ class AdminController extends Controller
         return view('admin.admin', compact('stats', 'recentClasses', 'recentQuizzes'));
     }
 
-    // Class Management
     public function getClasses()
     {
         $classes = ClassModel::where('teacher_id', Auth::id())
