@@ -1993,7 +1993,7 @@
             const total = window.quizData.length;
             const percentage = total > 0 ? Math.round((window.score / total) * 100) : 0;
             const correctAnswers = window.score;
-            const incorrectAnswers = total - window.score;
+            const incorrectAnswers = total - window.sco
             
             // Submit to server
             try {
