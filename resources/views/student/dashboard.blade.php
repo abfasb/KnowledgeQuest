@@ -403,11 +403,8 @@
                 </div>
             </div>
 
-            <!-- Main Content -->
             <main class="flex-1 p-6 overflow-y-auto bg-gradient-to-br from-gray-50 to-blue-50/30">
-                <!-- Dashboard Section -->
                 <div id="dashboard" class="content-section">
-                    <!-- Welcome Section -->
                     <div class="mb-8 animate__animated animate__fadeIn">
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                             <div>
@@ -416,9 +413,7 @@
                             </div>
                         </div>
                         
-                        <!-- Stats Cards Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                            <!-- Points Card -->
                             <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-blue-500 hover:shadow-2xl transition-all duration-500 animate__animated animate__fadeInUp">
                                 <div class="flex justify-between items-start">
                                     <div>
