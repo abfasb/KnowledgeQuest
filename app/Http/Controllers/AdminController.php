@@ -15,7 +15,6 @@ use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
-    // Dashboard
     public function dashboard()
     {
         $teacherId = Auth::id();
