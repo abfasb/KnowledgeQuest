@@ -359,7 +359,6 @@
                 </div>
             </header>
 
-            <!-- Mobile Sidebar -->
             <div id="mobileSidebar" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden md:hidden">
                 <div class="w-80 gradient-bg text-white h-full animate__animated animate__slideInLeft overflow-y-auto">
                     <div class="p-6 flex justify-between items-center border-b border-white/10">
