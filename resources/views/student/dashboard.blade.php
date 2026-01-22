@@ -152,7 +152,6 @@
                         <div class="flex-1">
                             <h3 class="font-semibold text-lg">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h3>
                             <div class="flex items-center space-x-2 mt-1">
-                                <span class="px-2 py-1 bg-white/10 rounded-full text-xs">Level 15</span>
                                 <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                                 <span class="text-white/70 text-xs">Online</span>
                             </div>
@@ -345,7 +344,7 @@
                                     </div>
                                 </a>
                                 <div class="border-t my-2"></div>
-                                <a href="#" class="flex items-center px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl transition-colors group">
+                                <a href="/logout" class="flex items-center px-4 text-red-600 hover:bg-red-50 rounded-xl transition-colors group">
                                     <div class="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
                                         <i class="fas fa-sign-out-alt text-red-600"></i>
                                     </div>
@@ -414,32 +413,6 @@
                             <div>
                                 <h1 class="text-4xl font-bold text-gray-800 mb-2">Welcome back, <span class="gradient-text">{{ auth()->user()->first_name }}</span>! 👋</h1>
                                 <p class="text-gray-600 text-lg" id="greetingMessage">Ready to ace some quizzes today?</p>
-                            </div>
-                            <div class="mt-4 md:mt-0">
-                                <div class="flex items-center space-x-3">
-                                    <div class="relative">
-                                        <svg class="w-20 h-20" viewBox="0 0 36 36">
-                                            <path d="M18 2.0845
-                                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                  fill="none" stroke="#e0e0e0" stroke-width="2"/>
-                                            <path id="dailyProgressCircle" d="M18 2.0845
-                                                      a 15.9155 15.9155 0 0 1 0 31.831
-                                                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                                                  fill="none" stroke="url(#gradient)" stroke-width="2" 
-                                                  stroke-dasharray="100, 100" stroke-linecap="round"/>
-                                            <defs>
-                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                    <stop offset="0%" stop-color="#4361ee"/>
-                                                    <stop offset="100%" stop-color="#3a0ca3"/>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                        <div class="absolute inset-0 flex items-center justify-center">
-                                            <span id="dailyProgressPercent" class="text-lg font-bold gradient-text">0%</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         
@@ -524,30 +497,7 @@
                             </div>
 
                             <!-- Rank Card -->
-                            <div class="bg-white rounded-2xl shadow-xl p-6 border-l-4 border-yellow-500 hover:shadow-2xl transition-all duration-500 animate__animated animate__fadeInUp animate__delay-3s">
-                                <div class="flex justify-between items-start">
-                                    <div>
-                                        <p class="text-gray-500 text-sm font-medium">Global Rank</p>
-                                        <h3 class="text-4xl font-bold text-gray-800 mt-2" id="globalRank">#0</h3>
-                                        <div class="flex items-center text-green-600 text-sm mt-2">
-                                            <i class="fas fa-arrow-up mr-2"></i>
-                                            <span id="rankChange">+5 positions</span>
-                                        </div>
-                                    </div>
-                                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-2xl flex items-center justify-center shadow-lg">
-                                        <i class="fas fa-trophy text-yellow-600 text-2xl"></i>
-                                    </div>
-                                </div>
-                                <div class="mt-4 pt-4 border-t border-gray-100">
-                                    <div class="flex justify-between text-sm">
-                                        <span class="text-gray-500">Top Percentile</span>
-                                        <span class="font-semibold" id="rankPercentile">0%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
-                                        <div id="rankProgress" class="bg-gradient-to-r from-yellow-500 to-yellow-600 h-2 rounded-full" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
 
                         <!-- Charts Row -->

@@ -113,7 +113,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         I want to join as:
                     </label>
-                    <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-1 gap-3">
                         <div>
                             <input type="radio" id="student" name="user_type" value="student" class="hidden peer" checked>
                             <label for="student" 
@@ -122,13 +122,6 @@
                             </label>
                         </div>
                         
-                        <div>
-                            <input type="radio" id="admin" name="user_type" value="admin" class="hidden peer">
-                            <label for="admin" 
-                                   class="flex items-center justify-center p-3 border-2 border-gray-300 rounded-lg cursor-pointer peer-checked:border-purple-500 peer-checked:bg-purple-50">
-                                <span class="font-medium">Admin</span>
-                            </label>
-                        </div>
                     </div>
                     @error('user_type')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

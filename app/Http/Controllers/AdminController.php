@@ -203,7 +203,6 @@ class AdminController extends Controller
             'show_result_immediately' => 'boolean',
         ]);
 
-        // Verify teacher owns the class
         $class = ClassModel::where('id', $request->class_id)
             ->where('teacher_id', Auth::id())
             ->firstOrFail();

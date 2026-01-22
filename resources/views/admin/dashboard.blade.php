@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin Panel - KnowledgeQuest</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -663,8 +664,8 @@
             const template = document.getElementById(templateId);
             if (!template) return;
             
-            // Remove any existing modal
-            const existingModal = document.querySelector('.fixed.inset-0.bg-gray-900');
+            // Remove any existing modal (but NOT the loading overlay)
+            const existingModal = document.querySelector('.fixed.inset-0.bg-gray-900.bg-opacity-50:not(#loadingOverlay)');
             if (existingModal) {
                 existingModal.remove();
             }
@@ -679,7 +680,7 @@
         }
 
         function hideModal() {
-            const modal = document.querySelector('.fixed.inset-0.bg-gray-900');
+            const modal = document.querySelector('.fixed.inset-0.bg-gray-900.bg-opacity-50:not(#loadingOverlay)');
             if (modal) {
                 modal.remove();
             }
@@ -687,32 +688,33 @@
 
         // Fetch wrapper with error handling
         async function fetchAPI(url, options = {}) {
-            showLoading();
-            try {
-                const response = await fetch(url, {
-                    ...options,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        ...options.headers
-                    }
-                });
-                
-                const data = await response.json();
-                
-                if (!response.ok) {
-                    throw new Error(data.message || 'Something went wrong');
-                }
-                
-                return data;
-            } catch (error) {
-                showToast(error.message, 'error');
-                throw error;
-            } finally {
-                hideLoading();
+    showLoading();
+    try {
+        const response = await fetch(url, {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '{{ csrf_token() }}',
+                ...options.headers
             }
+        });
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || 'Something went wrong');
         }
+        
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('API Error:', error);
+        showToast(error.message || 'Something went wrong', 'error');
+        throw error;
+    } finally {
+        hideLoading();
+    }
+}
 
         // Navigation Functions
         function showDashboard() {

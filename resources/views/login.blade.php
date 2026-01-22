@@ -159,10 +159,7 @@
                                     class="flex-1 py-3 bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-xl text-blue-700 font-medium hover:from-blue-100 hover:to-blue-200 transition duration-300">
                                 <i class="fas fa-user-graduate mr-2"></i>Student
                             </button>
-                            <button id="adminLogin" 
-                                    class="flex-1 py-3 bg-gradient-to-r from-purple-50 to-purple-100 border border-purple-200 rounded-xl text-purple-700 font-medium hover:from-purple-100 hover:to-purple-200 transition duration-300">
-                                <i class="fas fa-user-shield mr-2"></i>Admin
-                            </button>
+                            
                         </div>
                     </div>
                 </div>

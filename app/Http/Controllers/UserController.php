@@ -75,7 +75,6 @@ class UserController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return redirect()->route('/login')->with('success', 'Registration successful! Now its time to login.');
     }
 
     public function logout(Request $request)
